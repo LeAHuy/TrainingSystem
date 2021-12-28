@@ -1,0 +1,77 @@
+﻿@model WebTest.Models.Staff
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Staff</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>ID</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.staffId, new { htmlAttributes = new { @class = "form-control col-md-5", @Readonly = "readonly" } })
+        @Html.ValidationMessageFor(model => model.staffId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Name</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.staffName, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.staffName, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Email</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.staffEmail, new { htmlAttributes = new { @class = "form-control col-md-5 " } })
+        @Html.ValidationMessageFor(model => model.staffEmail, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Age</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.staffAge, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.staffAge, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Address</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.staffAddress, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.staffAddress, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Account Role</b></h6>
+    <div class="col-md-10">
+        @Html.DropDownList("accountId", null, htmlAttributes: new { @class = "form-control col-md-5" })
+        @Html.ValidationMessageFor(model => model.accountId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-block btn-primary col-md-2">Save</button>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

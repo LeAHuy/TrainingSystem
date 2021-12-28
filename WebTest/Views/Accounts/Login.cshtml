@@ -1,0 +1,32 @@
+﻿@model  WebTest.Models.Account
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout - Login.cshtml";
+}
+
+@using (Html.BeginForm())
+{ 
+    <div class="form-group position-relative has-icon-left mb-2">
+        @Html.EditorFor(model => model.accountUsername, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+    </div>
+    <div class="form-group position-relative has-icon-left mb-2">
+        @Html.EditorFor(model => model.accountPassword, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Password" } })
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                    Remember Me
+                </label>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block shadow-lg">Log in</button>
+        </div>
+        <!-- /.col -->
+    </div>
+}
+

@@ -1,0 +1,60 @@
+﻿@model WebTest.Models.Account
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Account</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <h6 class="control-label col-md-2"><b>ID</b></h6>       
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.accountId, new { htmlAttributes = new { @class = "form-control col-md-5", @Readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.accountId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h6 class="control-label col-md-2"><b>Username</b></h6>       
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.accountUsername, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+            @Html.ValidationMessageFor(model => model.accountUsername, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h6 class="control-label col-md-2"><b>Password</b></h6>      
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.accountPassword, new { htmlAttributes = new { @class = "form-control col-md-5", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.accountPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h6 class="control-label col-md-2"><b>Role</b></h6>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.accountRole, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+            @Html.ValidationMessageFor(model => model.accountRole, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-block btn-primary col-md-2">Save</button>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

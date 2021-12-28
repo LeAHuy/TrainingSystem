@@ -1,0 +1,20 @@
+﻿@model List<WebTest.Models.Task>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Index</h2>
+<div class="row">
+    <div class="col-md-4">
+        <h3>TODO List</h3>
+        @Html.ActionLink("Create task", "Create", "Task")
+        <ol>
+            @foreach (var task in Model)
+            {
+
+                <li>@task.Title @Html.ActionLink("[Delete]", "Delete", "Task", htmlAttributes: null, routeValues: new { id = task.Id })</li>
+            }
+        </ol>
+    </div>
+</div>
+
+

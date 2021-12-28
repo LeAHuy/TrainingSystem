@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebTest.Models.Topic>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["accountRole"].ToString() == ("Staff"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.topicId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.topicName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.topicDisciption)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.topicId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.topicId }, new { onclick = "return confirm('Are you sure you wish to delete this topic information?');" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <div class="error-page">
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Something wrong.</h3>
+
+            <p>
+                You have not been authorized to see this page, you may <a href="@Url.Action("Index", "Home")">return to index</a>.
+            </p>
+        </div>
+    </div>
+}

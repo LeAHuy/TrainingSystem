@@ -1,0 +1,91 @@
+﻿@model WebTest.Models.Cours
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Cours</h4>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>ID</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.courseId, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.courseId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Name</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.courseName, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.courseName, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Description</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.courseDisciption, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.courseDisciption, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Staff Name</b></h6>
+    <div class="col-md-10">
+        @Html.DropDownList("staffId", null, htmlAttributes: new { @class = "form-control col-md-5" })
+        @Html.ValidationMessageFor(model => model.staffId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Category Name</b></h6>
+    <div class="col-md-10">
+        @Html.DropDownList("catId", null, htmlAttributes: new { @class = "form-control col-md-5" })
+        @Html.ValidationMessageFor(model => model.catId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Topic Name</b></h6>
+    <div class="col-md-10">
+        @Html.DropDownList("topicId", null, htmlAttributes: new { @class = "form-control col-md-5" })
+        @Html.ValidationMessageFor(model => model.topicId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Trainer Name</b></h6>
+    <div class="col-md-10">
+        @Html.DropDownList("trainerId", null, htmlAttributes: new { @class = "form-control col-md-5" })
+        @Html.ValidationMessageFor(model => model.trainerId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Trainee Name</b></h6>
+    <div class="col-md-10">
+        @Html.DropDownList("traineeId", null, htmlAttributes: new { @class = "form-control col-md-5" })
+        @Html.ValidationMessageFor(model => model.traineeId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-block btn-primary col-md-2">Create</button>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

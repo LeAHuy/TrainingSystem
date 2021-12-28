@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WebTest.Models.Cours>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["accountRole"].ToString() == ("Staff") || Session["accountRole"].ToString() == ("Trainer") || Session["accountRole"].ToString() == ("Trainee"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Staff ID</th>
+                <th>Category ID</th>
+                <th>Topic ID</th>
+                <th>Trainer ID</th>
+                <th>Trainee ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.courseId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.courseName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.courseDisciption)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.staffId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.catId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.topicId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.trainerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.traineeId)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.courseId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.courseId }, new { onclick = "return confirm('Are you sure you wish to delete this course information?');" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Staff ID</th>
+                <th>Category ID</th>
+                <th>Topic ID</th>
+                <th>Trainer ID</th>
+                <th>Trainee ID</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <div class="error-page">
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Something wrong.</h3>
+
+            <p>
+                You have not been authorized to see this page, you may <a href="@Url.Action("Index", "Home")">return to index</a>.
+            </p>
+        </div>
+    </div>
+}

@@ -1,0 +1,85 @@
+﻿@model WebTest.Models.Admin
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Admin</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>ID</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.adminId, new { htmlAttributes = new { @class = "form-control col-md-5", @Readonly = "readonly" } })
+        @Html.ValidationMessageFor(model => model.adminId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Name</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.adminName, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.adminName, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Email</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.adminEmail, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.adminEmail, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Specially</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.adminSpecialty, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.adminSpecialty, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Age</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.adminAge, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.adminAge, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Address</b></h6>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.adminAddress, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+        @Html.ValidationMessageFor(model => model.adminAddress, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <h6 class="control-label col-md-2"><b>Account Role</b></h6>
+    <div class="col-md-10">
+        @Html.DropDownList("accountId", null, htmlAttributes: new { @class = "form-control col-md-5" })
+        @Html.ValidationMessageFor(model => model.accountId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-block btn-primary col-md-2">Save</button>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
